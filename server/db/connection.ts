@@ -49,8 +49,18 @@ export function getPool(): Pool {
         : { rejectUnauthorized: false };
   }
 
+  // Strip query parameters from connection URI that cause mysql2 configuration warnings (like ssl-mode)
+  let cleanUri = config.databaseUrl;
+  try {
+    const parsed = new URL(config.databaseUrl.replace(/^mysql2?:/i, 'http:'));
+    parsed.searchParams.delete('ssl-mode');
+    cleanUri = parsed.toString().replace(/^http:/i, 'mysql:');
+  } catch {
+    // Keep original URI if parsing fails
+  }
+
   poolInstance = mysql.createPool({
-    uri: config.databaseUrl,
+    uri: cleanUri,
     ssl: sslConfig,
     waitForConnections: true,
     connectionLimit: 10,

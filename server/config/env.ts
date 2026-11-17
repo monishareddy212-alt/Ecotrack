@@ -35,7 +35,7 @@ export function resolveDbSslConfig(
   try {
     const parsed = new URL(databaseUrl.replace(/^mysql2?:/i, 'http:'));
     const sslParam = parsed.searchParams.get('ssl')?.toLowerCase();
-    const sslMode = parsed.searchParams.get('sslmode')?.toLowerCase();
+    const sslMode = (parsed.searchParams.get('sslmode') || parsed.searchParams.get('ssl-mode'))?.toLowerCase();
     const host = parsed.hostname.toLowerCase();
 
     if (sslParam === 'false' || sslMode === 'disable') {
@@ -48,6 +48,14 @@ export function resolveDbSslConfig(
 
     if (
       host.includes('aivencloud.com') ||
+      host.includes('render.com') ||
+      host.startsWith('dpg-') ||
+      host.includes('railway')
+    ) {
+      return { rejectUnauthorized: false };
+    }
+
+    if (
       host.includes('psdb.cloud') ||
       host.includes('neon.tech') ||
       sslMode === 'require' ||
@@ -55,10 +63,6 @@ export function resolveDbSslConfig(
       sslMode === 'verify-full'
     ) {
       return { rejectUnauthorized: true };
-    }
-
-    if (host.includes('render.com') || host.startsWith('dpg-') || host.includes('railway')) {
-      return { rejectUnauthorized: false };
     }
 
     if (host === 'localhost' || host === '127.0.0.1' || host === 'mysql' || host === 'postgres') {

@@ -58,15 +58,31 @@ export async function runMigrations(): Promise<string[]> {
     const sql = fs.readFileSync(path.join(migrationsDir, file), 'utf8');
 
     await withTransaction(async (client) => {
-      // Split statements by semicolon (ignoring comments) to run individual commands cleanly
-      const statements = sql
-        .split(/;\s*[\r\n]+/)
+      // Remove SQL comment lines so statements starting with comments are not skipped
+      const withoutComments = sql
+        .split('\n')
+        .filter((line) => !line.trim().startsWith('--'))
+        .join('\n');
+
+      const statements = withoutComments
+        .split(';')
         .map((s) => s.trim())
-        .filter((s) => s.length > 0 && !s.startsWith('--'));
+        .filter((s) => s.length > 0);
 
       for (const statement of statements) {
-        if (statement.length > 0) {
+        try {
           await client.query(statement);
+        } catch (stmtErr: any) {
+          // If index or table already exists in partial previous run, continue idempotently
+          if (
+            stmtErr?.code === 'ER_DUP_KEYNAME' ||
+            stmtErr?.code === 'ER_TABLE_EXISTS_ERROR' ||
+            stmtErr?.message?.includes('Duplicate key name') ||
+            stmtErr?.message?.includes('already exists')
+          ) {
+            continue;
+          }
+          throw stmtErr;
         }
       }
 

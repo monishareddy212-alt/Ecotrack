@@ -90,7 +90,7 @@ EcoTrack runs both the **React production build** (`dist/`) and the **Express AP
    - **Instance Type**: `Free`
    - **Build Command**:
      ```bash
-     npm ci && npm run build
+     npm install --include=dev && npm run build
      ```
    - **Start Command**:
      ```bash

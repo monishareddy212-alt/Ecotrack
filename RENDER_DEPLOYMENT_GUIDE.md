@@ -109,7 +109,7 @@ You can deploy using either the **Manual Setup** (easiest) or the **Blueprint Se
 | **Region** | Choose the region closest to your MySQL database | Minimizes database query latency. |
 | **Branch** | `main` | Git branch to deploy. |
 | **Runtime** | `Node` | Node.js execution environment. |
-| **Build Command** | `npm ci && npm run build` | Installs exact dependencies and compiles frontend + server. |
+| **Build Command** | `npm install --include=dev && npm run build` | Installs dependencies including build tools and compiles frontend + server. |
 | **Start Command** | `npm start` | Executes the production single server (`node server.js`). |
 | **Instance Type** | `Free` | Render's $0/month free tier. |
 
@@ -148,7 +148,7 @@ Watch the live deployment log in your Render dashboard. You will see:
 
 1. **Build Phase**:
    ```text
-   ==> Running build command 'npm ci && npm run build'...
+   ==> Running build command 'npm install --include=dev && npm run build'...
    vite v8.3.8 building client environment for production...
    ✓ 2086 modules transformed.
    dist/index.html                   1.44 kB
