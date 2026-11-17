@@ -9,17 +9,17 @@ This guide documents how to push EcoTrack to GitHub, configure a free cloud **My
 ## 1. Preparing & Pushing to GitHub
 
 1. **Verify sensitive files are ignored** (never commit `.env`, database credentials, `SESSION_SECRET`, `node_modules/`, `dist/`, or `server.js` — already configured in `.gitignore`).
-2. **Initialize Git and push to `main`** (if exporting fresh from Google AI Studio):
+2. **Initialize Git and push to `main`** (if pushing to a fresh repository):
    ```bash
    git init -b main
    git add .
    git status   # Confirm NO .env or secret files are staged
-   git commit -m "EcoTrack Phases 1-6 complete"
+   git commit -m "EcoTrack production ready"
    git remote add origin https://github.com/<your-username>/<your-ecotrack-repo>.git
    git push -u origin main
    ```
 3. **Verify GitHub Actions CI**:
-   - Pushing to `main` automatically triggers `.github/workflows/ci.yml`, which spins up a `postgres:16-alpine` container, runs `npm ci`, `npm run lint`, `npm run build`, `npm run db:migrate`, `npm run db:seed`, and the full `npm test` suite.
+   - Pushing to `main` automatically triggers `.github/workflows/ci.yml`, which spins up a `mysql:8.0` container, runs `npm ci`, `npm run lint`, `npm run build`, `npm run db:migrate`, `npm run db:seed`, and the full `npm test` suite.
 
 ---
 

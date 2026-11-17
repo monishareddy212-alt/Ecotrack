@@ -11,23 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      postgres:
-        image: postgres:16-alpine
+      mysql:
+        image: mysql:8.0
         env:
-          POSTGRES_USER: ecotrack_test
-          POSTGRES_PASSWORD: ecotrack_test_password
-          POSTGRES_DB: ecotrack_test
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: ecotrack_test
+          MYSQL_USER: ecotrack_test
+          MYSQL_PASSWORD: ecotrack_test_password
         ports:
-          - 5432:5432
+          - 3306:3306
         options: >-
-          --health-cmd pg_isready
+          --health-cmd="mysqladmin ping"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
 
     env:
       NODE_ENV: test
-      DATABASE_URL: postgresql://ecotrack_test:ecotrack_test_password@localhost:5432/ecotrack_test?sslmode=disable
+      DATABASE_URL: mysql://ecotrack_test:ecotrack_test_password@127.0.0.1:3306/ecotrack_test
       DATABASE_SSL: "false"
       SESSION_SECRET: "ci-integration-session-secret-minimum-32-characters-long"
 
@@ -50,11 +51,11 @@ jobs:
       - name: Run production build
         run: npm run build
 
-      - name: Run PostgreSQL migrations
+      - name: Run MySQL migrations
         run: npm run db:migrate
 
       - name: Run idempotent seed script
         run: npm run db:seed
 
-      - name: Run unit and PostgreSQL/Auth integration tests
+      - name: Run unit and MySQL/Auth integration tests
         run: npm test

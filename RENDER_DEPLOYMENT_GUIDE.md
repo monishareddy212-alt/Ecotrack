@@ -131,7 +131,7 @@ You can deploy using either the **Manual Setup** (easiest) or the **Blueprint Se
 
 ### Method 2: Render Blueprint Setup (Using `render.yaml`)
 
-Because this repository includes a pre-configured [`render.yaml`](file:///c:/Users/voakh/Downloads/ecotrack-—-carbon-emission-&-sustainability-tracker/render.yaml):
+Because this repository includes a pre-configured [`render.yaml`](./render.yaml):
 
 1. In the Render Dashboard, click **New +** &rarr; **Blueprint**.
 2. Connect your `ecotrack` repository.

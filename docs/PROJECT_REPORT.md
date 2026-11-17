@@ -213,7 +213,7 @@ $$\text{Estimated Carbon Emissions (kg CO}_2\text{e)} = \text{Activity Quantity}
 ---
 
 ## 22. UI Screenshots
-Inside the Google AI Studio build container, `DATABASE_URL` (PostgreSQL) was not provisioned, so browser verification covered public authentication UI screens (`/login`, `/register`) directly while authenticated screens require a live Neon PostgreSQL instance.
+In local development without `DATABASE_URL` provisioned, browser verification covered public authentication UI screens (`/login`, `/register`) directly while authenticated screens require a live MySQL instance.
 
 **Screenshots Students Should Capture After Live Render + Neon Deployment**:
 1. Login Page (`/login`) and Registration Page (`/register`)
