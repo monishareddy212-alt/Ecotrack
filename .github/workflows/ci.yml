@@ -1,0 +1,60 @@
+name: EcoTrack CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: ecotrack_test
+          POSTGRES_PASSWORD: ecotrack_test_password
+          POSTGRES_DB: ecotrack_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      NODE_ENV: test
+      DATABASE_URL: postgresql://ecotrack_test:ecotrack_test_password@localhost:5432/ecotrack_test?sslmode=disable
+      DATABASE_SSL: "false"
+      SESSION_SECRET: "ci-integration-session-secret-minimum-32-characters-long"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run TypeScript checks
+        run: npm run lint
+
+      - name: Run production build
+        run: npm run build
+
+      - name: Run PostgreSQL migrations
+        run: npm run db:migrate
+
+      - name: Run idempotent seed script
+        run: npm run db:seed
+
+      - name: Run unit and PostgreSQL/Auth integration tests
+        run: npm test

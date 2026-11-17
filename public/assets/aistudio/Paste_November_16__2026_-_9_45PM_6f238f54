@@ -1,0 +1,1132 @@
+
+You are a senior full-stack software engineer, PostgreSQL database architect, application security auditor, DevOps engineer, QA engineer, and professional UI/UX designer.
+
+You are responsible for completing the final development, verification, and deployment phase of my college DBMS project.
+
+PROJECT NAME:
+EcoTrack — Carbon Emission & Sustainability Tracker
+
+DEVELOPMENT PLATFORM:
+Google AI Studio — Build Mode
+
+CURRENT PHASE:
+PHASE 6 — FINAL SYSTEM AUDIT, TESTING, SECURITY VERIFICATION, GITHUB INTEGRATION, RENDER DEPLOYMENT, AND DBMS DOCUMENTATION
+
+TECHNOLOGY STACK:
+Frontend:
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Lucide React
+- Recharts
+
+Backend:
+- Node.js
+- Express.js
+
+Database:
+- PostgreSQL
+- Neon PostgreSQL
+- node-postgres (pg)
+
+Hosting:
+- Render Node.js Web Service
+
+Version Control:
+- GitHub
+
+IMPORTANT:
+Continue working directly in the EXISTING Google AI Studio project.
+
+Do not create a new application.
+Do not rewrite working functionality unnecessarily.
+Do not change the technology stack.
+Do not remove required features.
+Do not introduce additional paid dependencies.
+
+This is the FINAL development phase.
+
+The objective is to finish the complete EcoTrack project and prepare it for successful college demonstration.
+
+==================================================
+PART 1 — COMPLETE PROJECT AUDIT
+==================================================
+
+Inspect the entire existing codebase.
+
+Do not assume Phases 1–5 were fully completed merely because implementation prompts were previously supplied.
+
+Examine:
+
+1. React application structure.
+2. TypeScript types.
+3. UI components.
+4. Routing system.
+5. Express server architecture.
+6. API implementation.
+7. PostgreSQL connection.
+8. SQL migrations.
+9. Authentication.
+10. Session handling.
+11. Activity CRUD operations.
+12. Carbon calculator.
+13. Dashboard statistics.
+14. Analytics and charts.
+15. Sustainability goals.
+16. Recommendations.
+17. CSV reporting.
+18. Profile settings.
+19. Environment variables.
+20. Build configuration.
+
+For every feature, classify it as:
+
+- VERIFIED WORKING
+- IMPLEMENTED BUT UNVERIFIED
+- PARTIALLY IMPLEMENTED
+- BROKEN
+- MISSING
+
+Fix all missing and broken features required for the approved six-phase scope.
+
+Do not make unrelated architecture changes.
+
+Keep a record of every issue identified and its resolution.
+
+==================================================
+PART 2 — VERIFY ALL APPLICATION FEATURES
+==================================================
+
+AUTHENTICATION:
+
+Verify:
+- Registration.
+- Email validation.
+- Duplicate email handling.
+- Password hashing.
+- Login.
+- Invalid login rejection.
+- Session persistence.
+- Logout.
+- Protected routes.
+- Session expiration.
+
+DASHBOARD:
+
+Verify:
+- Monthly carbon footprint.
+- Daily average.
+- Monthly sustainability target.
+- Previous month comparison.
+- Recent activity records.
+- Category breakdown.
+- Monthly emission trends.
+
+ACTIVITY MANAGEMENT:
+
+Verify:
+- Add activity.
+- Select category.
+- Select activity type.
+- Display correct measurement unit.
+- Enter quantity.
+- Select activity date.
+- Save to PostgreSQL.
+- View activity history.
+- Edit existing activity.
+- Recalculate emissions after editing.
+- Delete activity.
+- Search and filtering.
+- Pagination.
+
+ANALYTICS:
+
+Verify:
+- Monthly trend.
+- Daily trend.
+- Category breakdown.
+- Highest emission category.
+- Six-month comparison.
+- Twelve-month comparison.
+- Calendar date accuracy.
+- Correct handling of missing data.
+
+SUSTAINABILITY GOALS:
+
+Verify:
+- Create monthly target.
+- Update target.
+- Delete target.
+- View target progress.
+- Target percentage.
+- Exceeded target indicator.
+- Goal history.
+
+RECOMMENDATIONS:
+
+Verify:
+- Actual database-based recommendations.
+- Highest-emission category detection.
+- Appropriate suggestions.
+- No fabricated personalized insights.
+
+REPORTS:
+
+Verify:
+- Monthly report.
+- Category totals.
+- Date filters.
+- CSV download.
+- Correct column labels.
+- Data consistency.
+
+PROFILE:
+
+Verify:
+- User profile retrieval.
+- Update full name.
+- Persist changes.
+- Display updated user name.
+
+Every feature must be connected to actual backend functionality.
+
+Do not mark a visual placeholder as a completed feature.
+
+==================================================
+PART 3 — COMPLETE POSTGRESQL AUDIT
+==================================================
+
+Verify the five academic tables:
+
+1. users
+2. activity_types
+3. emission_factors
+4. activity_logs
+5. monthly_goals
+
+Check:
+
+- Primary keys.
+- Foreign keys.
+- Data types.
+- NOT NULL constraints.
+- UNIQUE constraints.
+- CHECK constraints.
+- Indexes.
+- Referential integrity.
+- Migration history.
+- Normalization.
+- Correct relationships.
+
+Ensure user records are isolated.
+
+Check that deleting an activity does not delete its emission factor.
+
+Check that editing an activity does not corrupt historical carbon calculations.
+
+Verify NUMERIC data handling.
+
+Ensure every carbon record references the emission factor used in its calculation.
+
+Verify goal_month represents the first day of its month.
+
+Review the database's actual structure before changing anything.
+
+Do not drop or recreate the database to resolve ordinary migration problems.
+
+Do not delete real user data.
+
+Create safe migrations only when necessary.
+
+Explain all five tables and their relationships in documentation.
+
+Infrastructure tables created by authentication or migration tools may exist separately.
+
+==================================================
+PART 4 — CARBON CALCULATOR ACCURACY
+==================================================
+
+Audit the emission calculation service.
+
+CORE FORMULA:
+
+Estimated Carbon Emissions (kg CO2e)
+= Activity Quantity × Emission Factor
+
+Verify:
+
+1. Correct formula.
+2. Correct units.
+3. Correct emission factor selection.
+4. Appropriate effective date.
+5. Documented factor source.
+6. Accurate decimal calculations.
+7. Correct database persistence.
+8. Correct editing behavior.
+9. Correct reporting totals.
+10. Correct rounding.
+
+Supported activities:
+
+Transportation:
+- Car
+- Motorcycle
+- Bus
+- Metro
+
+Energy:
+- Electricity
+- LPG
+
+Lifestyle:
+- Plant-based meals
+- Meat-based meals
+
+Do not invent official factors.
+
+Ensure every configured factor has a reliable reference and appropriate assumptions.
+
+Clearly describe meal-based estimates as approximate.
+
+Do not describe the result as a complete personal carbon footprint if only selected activities are recorded.
+
+Use the description:
+
+"Estimated emissions from your recorded activities."
+
+If factors are missing or unverifiable, identify them as blockers.
+
+Do not manufacture numeric values to make the application appear complete.
+
+==================================================
+PART 5 — SECURITY AUDIT
+==================================================
+
+Perform a complete security review appropriate for a student web application.
+
+AUTHENTICATION SECURITY:
+- Secure password hashing.
+- No plaintext passwords.
+- Secure session creation.
+- Session regeneration after login.
+- Server-side session storage.
+- Proper session destruction on logout.
+- Secure and HttpOnly cookies.
+- Appropriate SameSite policy.
+- Proper Render reverse proxy configuration.
+
+AUTHORIZATION:
+- Dashboard restricted to logged-in users.
+- Activity records restricted to their owners.
+- Goals restricted to their owners.
+- Reports restricted to their owners.
+- Profile updates restricted to the current user.
+
+INPUT SECURITY:
+- Server-side input validation.
+- Parameterized SQL queries.
+- Rejection of invalid numbers.
+- Rejection of invalid dates.
+- Safe quantity bounds.
+- CSRF protection.
+- Authentication rate limiting.
+- CSV formula injection protection.
+
+CONFIGURATION:
+- No hardcoded secrets.
+- No credentials in frontend bundles.
+- No database credentials in Git.
+- Production debug mode disabled.
+- No sensitive information in logs.
+- Safe production error messages.
+- Appropriate security headers.
+- No unnecessary permissive CORS.
+
+DEPENDENCIES:
+- Review direct dependencies.
+- Identify known vulnerabilities.
+- Fix critical or high-risk issues where compatible fixes exist.
+- Avoid unsafe force upgrades.
+- Preserve a working lockfile.
+
+Test unauthorized API access explicitly.
+
+Use two isolated test users to verify cross-user data isolation.
+
+Do not claim perfect or absolute security.
+
+Document any remaining limitations.
+
+==================================================
+PART 6 — FRONTEND UI/UX FINAL POLISH
+==================================================
+
+Audit every application screen.
+
+Required screens:
+
+1. Login
+2. Registration
+3. Dashboard
+4. Add Activity
+5. Activity History
+6. Analytics
+7. Sustainability Goals
+8. Settings
+
+Preserve existing EcoTrack branding:
+
+Primary: #176B52
+Dark Green: #18392C
+Background: #F6F8F3
+Card Background: #FFFFFF
+Soft Sage: #DCEDE3
+Accent Amber: #F4B860
+
+DESIGN VERIFICATION:
+
+- Consistent layout.
+- Correct spacing.
+- Professional typography.
+- Matching card styles.
+- Consistent buttons.
+- Clean form inputs.
+- Accessible labels.
+- Correct field alignment.
+- Responsive charts.
+- Readable tables.
+- Working dropdowns.
+- Working modals.
+- Working navigation.
+- Clear error messages.
+- Proper loading states.
+- Helpful empty states.
+- No broken icons.
+- No console errors.
+- No text overlapping.
+- No horizontal overflow.
+
+TEST VIEWPORTS:
+- 1440px desktop.
+- 1024px laptop/tablet.
+- 768px tablet.
+- 375px mobile.
+
+Check keyboard navigation and visible focus indicators.
+
+Ensure chart tooltips and legends are usable on mobile.
+
+Use restrained styling improvements only.
+
+Do not redesign working pages unnecessarily.
+
+==================================================
+PART 7 — AUTOMATED TESTING
+==================================================
+
+Create and execute suitable tests.
+
+BACKEND TESTS:
+
+- User registration.
+- Duplicate registration.
+- Password hashing.
+- Login.
+- Logout.
+- Session persistence.
+- Protected routes.
+- Activity creation.
+- Activity retrieval.
+- Activity modification.
+- Activity deletion.
+- Carbon calculations.
+- Monthly goals.
+- Recommendation rules.
+- Analytics aggregation.
+- CSV export.
+- Input validation.
+- User ownership checks.
+
+DATABASE TESTS:
+
+- Primary key behavior.
+- Foreign key enforcement.
+- Unique constraints.
+- Check constraints.
+- Migration execution.
+- Query accuracy.
+- Record persistence.
+- Transaction rollback.
+- User isolation.
+
+FRONTEND TESTS:
+
+- All routes render.
+- Login and registration forms.
+- Dashboard statistics.
+- Activity forms.
+- Activity history.
+- Goal forms.
+- Chart rendering.
+- Filter interactions.
+- Error messages.
+- Empty states.
+
+END-TO-END TEST:
+
+Use a browser automation tool if available.
+
+Test this complete workflow:
+
+1. Register a test account.
+2. Login.
+3. Open dashboard.
+4. Add a supported activity.
+5. Verify backend calculation.
+6. Verify the activity was saved.
+7. View activity history.
+8. Edit the activity.
+9. Verify recalculated emissions.
+10. View updated dashboard.
+11. Set a monthly target.
+12. Verify progress.
+13. Open analytics.
+14. Download CSV report.
+15. Delete the activity.
+16. Verify totals update.
+17. Logout.
+18. Confirm private routes cannot be accessed without authentication.
+
+Ensure all test data is isolated from real user accounts.
+
+Run:
+- TypeScript checks.
+- Frontend production build.
+- Backend tests.
+- PostgreSQL integration tests.
+- Security tests.
+- Available browser tests.
+
+If testing is unavailable inside AI Studio, create a GitHub Actions workflow that runs the required tests with a PostgreSQL service container.
+
+Do not claim tests passed unless execution evidence exists.
+
+==================================================
+PART 8 — PERFORMANCE VERIFICATION
+==================================================
+
+Optimize for an efficient college application.
+
+Check:
+
+- Unnecessary React re-renders.
+- Repeated network requests.
+- Oversized frontend dependencies.
+- Inefficient SQL queries.
+- Missing database indexes.
+- Excessive data fetching.
+- Large activity history responses.
+- Chart rendering efficiency.
+- Unnecessary images and fonts.
+
+Use database-side aggregation.
+
+Keep pagination server-side.
+
+Avoid external services unless necessary.
+
+Keep memory consumption reasonable for Render's free web service.
+
+Do not introduce Redis, microservices, or background job infrastructure unless absolutely required.
+
+Record actual performance measurements only when measured.
+
+Do not invent benchmark results.
+
+==================================================
+PART 9 — GITHUB PROJECT PREPARATION
+==================================================
+
+Prepare the entire project for GitHub.
+
+Verify:
+- Complete source code.
+- package.json.
+- Lockfile.
+- TypeScript configuration.
+- React build configuration.
+- Express server.
+- Database migrations.
+- Seed scripts.
+- Tests.
+- Documentation.
+- .gitignore.
+- .env.example.
+- README.md.
+
+Remove:
+- Unnecessary generated files.
+- Temporary debug files.
+- Duplicate code.
+- Obsolete demo implementations.
+- Unused dependencies.
+- Unnecessary logs.
+- Unused assets.
+
+Do not remove required application files.
+
+Do not commit:
+- .env files with credentials.
+- PostgreSQL passwords.
+- SESSION_SECRET.
+- API keys.
+- node_modules.
+- Build caches.
+- Real user data.
+
+Use the Google AI Studio GitHub sync feature if it is available and connected.
+
+If GitHub access is not authorized, prepare the source for export and provide the exact steps required.
+
+Do not invent a successful Git push.
+
+Use the main branch unless the actual repository configuration requires a different process.
+
+Record the actual commit SHA if a commit is created.
+
+==================================================
+PART 10 — RENDER DEPLOYMENT CONFIGURATION
+==================================================
+
+Prepare the completed EcoTrack project for deployment as ONE Render Node.js Web Service.
+
+Target architecture:
+
+Browser
+   |
+   v
+Render Express Server
+   |
+   +--> React Production Build
+   |
+   +--> Express API
+           |
+           v
+       Neon PostgreSQL
+
+REQUIREMENTS:
+
+1. Production React build.
+2. Express serves frontend static assets.
+3. API endpoints use /api.
+4. SPA fallback handles frontend routes.
+5. Server listens on process.env.PORT.
+6. Server binds to 0.0.0.0.
+7. NODE_ENV=production.
+8. DATABASE_URL is server-only.
+9. SESSION_SECRET is configured securely.
+10. PostgreSQL connections use secure transport.
+11. Static assets are served correctly.
+12. No hardcoded localhost URLs.
+13. Application starts with npm start.
+14. Build completes with npm run build.
+15. Health-check endpoint responds successfully.
+
+Review actual package scripts before selecting commands.
+
+The desired Render configuration is:
+
+Service Type:
+Web Service
+
+Runtime:
+Node.js
+
+Build Command:
+npm ci && npm run build
+
+Start Command:
+npm start
+
+These commands must be validated against the actual repository structure.
+
+If the project is a monorepo with separate package directories, create working root-level scripts or use the correct Render root directory.
+
+Do not blindly assume the commands work.
+
+Provide a render.yaml Blueprint configuration only if it improves deployment clarity and matches available Render plan features.
+
+==================================================
+PART 11 — ENVIRONMENT VARIABLES
+==================================================
+
+Prepare an .env.example file.
+
+Include required server-side configuration such as:
+
+NODE_ENV=production
+DATABASE_URL=your-postgresql-connection-string
+SESSION_SECRET=replace-with-a-long-random-secret
+
+PORT should be read from the Render-provided environment variable.
+
+Only add additional environment variables when the actual implementation requires them.
+
+Explain what each variable does.
+
+Real secret values must be added through the Render dashboard or another authorized secret manager.
+
+Never write real credentials in generated documentation.
+
+Never expose secrets using VITE_ environment variables.
+
+Verify production configuration fails clearly when required secrets are missing.
+
+==================================================
+PART 12 — PRODUCTION DATABASE MIGRATIONS
+==================================================
+
+Prepare a safe initial production migration procedure.
+
+IMPORTANT:
+
+Render's Free Web Service does not provide shell access or the paid pre-deploy command feature.
+
+Therefore, do not design a migration process that depends on these features.
+
+Preferred approach:
+
+1. Verify migration files locally or in isolated CI.
+2. Confirm production DATABASE_URL is securely configured.
+3. Review pending migrations.
+4. Take a database backup or verify an available recovery mechanism.
+5. Execute safe migrations through an authorized controlled environment.
+6. Verify schema state.
+7. Deploy application code.
+8. Verify application database connectivity.
+
+Possible execution environments include a trusted local machine or a manually triggered, secured GitHub Actions workflow.
+
+Never expose DATABASE_URL in workflow logs.
+
+Do not automatically perform destructive migrations on every server startup.
+
+Do not use db reset commands against production.
+
+Do not erase existing data.
+
+Seed only valid reference activity types and documented emission factors.
+
+If production migrations cannot be executed, report the blocker and provide exact manual instructions.
+
+==================================================
+PART 13 — DEPLOY TO RENDER
+==================================================
+
+If authorized Render and GitHub integrations are available, carry out deployment.
+
+Otherwise prepare everything possible and provide precise manual steps.
+
+DEPLOYMENT PROCESS:
+
+Step 1:
+Ensure the final source code is in GitHub.
+
+Step 2:
+Open the Render dashboard.
+
+Step 3:
+Create a Node.js Web Service.
+
+Step 4:
+Connect the EcoTrack GitHub repository.
+
+Step 5:
+Select the correct branch.
+
+Step 6:
+Configure verified build and start commands.
+
+Step 7:
+Configure environment variables.
+
+Step 8:
+Apply database migrations through the approved secure procedure.
+
+Step 9:
+Deploy the application.
+
+Step 10:
+Inspect deployment and application logs.
+
+Step 11:
+Open the actual deployed URL.
+
+Step 12:
+Verify the health endpoint.
+
+Step 13:
+Test registration and login.
+
+Step 14:
+Test activity creation with real PostgreSQL persistence.
+
+Step 15:
+Test dashboard, analytics, goals, and CSV reports.
+
+Do not invent a Render URL.
+
+Do not report successful deployment unless the live service has been verified.
+
+If AI Studio cannot directly deploy to Render, do not silently switch hosting providers.
+
+Provide the exact Render steps instead.
+
+==================================================
+PART 14 — LIVE DEPLOYMENT ACCEPTANCE
+==================================================
+
+When the app is deployed, verify the actual public URL.
+
+TEST:
+
+1. Homepage loads.
+2. Registration works.
+3. Login works.
+4. Session survives page refresh.
+5. Dashboard loads.
+6. Activity creation persists.
+7. Carbon calculation is correct.
+8. Activity history displays saved records.
+9. Edit and delete work.
+10. Charts use real database results.
+11. Goal creation persists.
+12. CSV downloads.
+13. Logout works.
+14. Protected routes reject anonymous access.
+15. Mobile layout remains usable.
+16. Browser refresh does not break frontend routing.
+17. No critical browser console errors.
+18. No application startup errors.
+
+If the free service has been idle, allow for its documented cold-start behavior during testing.
+
+Do not claim the application has zero latency.
+
+Do not use production user data for destructive demonstrations.
+
+Record exact deployment status and verified public URL.
+
+==================================================
+PART 15 — DBMS COLLEGE DOCUMENTATION
+==================================================
+
+Create beginner-friendly documentation suitable for a college DBMS mini-project.
+
+Provide a detailed PROJECT REPORT with:
+
+1. Project Title
+2. Abstract
+3. Introduction
+4. Problem Statement
+5. Project Objectives
+6. Existing System Limitations
+7. Proposed System
+8. Technology Stack
+9. System Architecture
+10. Functional Requirements
+11. Nonfunctional Requirements
+12. ER Diagram
+13. Relational Schema
+14. Table Descriptions
+15. Primary Keys
+16. Foreign Keys
+17. Relationships
+18. Database Normalization
+19. SQL Query Examples
+20. Carbon Calculation Method
+21. Module Descriptions
+22. UI Screenshots
+23. Testing Methodology
+24. Actual Test Results
+25. Deployment Architecture
+26. Limitations
+27. Future Enhancements
+28. Conclusion
+29. References
+
+Explain every technical concept in simple English.
+
+Assume the audience includes college faculty members who want to understand how PostgreSQL and DBMS concepts are applied.
+
+Do not invent screenshots or testing evidence.
+
+Capture screenshots from the real application when browser capture tools are available.
+
+Otherwise provide a list of screenshots the student should capture.
+
+==================================================
+PART 16 — SQL AND DATABASE DEMONSTRATION
+==================================================
+
+Create a separate DBMS demonstration guide.
+
+Include actual SQL examples for:
+
+CREATE TABLE
+INSERT
+SELECT
+UPDATE
+DELETE
+INNER JOIN
+GROUP BY
+ORDER BY
+SUM
+AVG
+COUNT
+HAVING
+INDEX
+
+Use the real EcoTrack schema.
+
+Explain:
+- What each query does.
+- Which tables are used.
+- Why the query is required.
+- What kind of result it returns.
+
+Provide a clear ER diagram.
+
+Explain normalization up to Third Normal Form.
+
+Provide examples of:
+- One-to-many relationships.
+- Referential integrity.
+- Data consistency.
+- Transactions.
+- Database constraints.
+
+Avoid unnecessarily advanced database theory.
+
+All sample SQL must be consistent with the actual schema.
+
+Do not execute destructive demonstration commands on the production database.
+
+==================================================
+PART 17 — VIVA PREPARATION
+==================================================
+
+Create a simple college viva guide.
+
+Include at least 20 questions with beginner-friendly answers.
+
+Cover topics such as:
+
+- What is EcoTrack?
+- Why did you choose this project?
+- What problem does it solve?
+- What is DBMS?
+- Why PostgreSQL?
+- What is a relational database?
+- What is a primary key?
+- What is a foreign key?
+- What is normalization?
+- What is 3NF?
+- What is a JOIN?
+- What is CRUD?
+- How are emissions calculated?
+- What is an emission factor?
+- How does user authentication work?
+- How do the tables relate?
+- How are monthly reports generated?
+- What is GROUP BY?
+- What is a database transaction?
+- How is SQL injection prevented?
+- How is the project deployed?
+- What are the project limitations?
+
+Provide concise, understandable answers.
+
+Create a five-minute demonstration script.
+
+Suggested demonstration:
+
+1. Introduce EcoTrack.
+2. Explain the problem being solved.
+3. Show registration/login.
+4. Add a carbon activity.
+5. Explain the calculation.
+6. Show PostgreSQL persistence.
+7. Demonstrate activity CRUD.
+8. Show dashboard charts.
+9. Set a sustainability goal.
+10. Export a CSV report.
+11. Explain the ER diagram.
+12. Conclude with the project benefits.
+
+Keep the demonstration realistic and reproducible.
+
+==================================================
+PART 18 — FINAL DOCUMENTATION FILES
+==================================================
+
+Create and update documentation files as appropriate:
+
+README.md
+docs/PROJECT_REPORT.md
+docs/ER_DIAGRAM.md
+docs/DATABASE_SCHEMA.md
+docs/SQL_QUERIES.md
+docs/TEST_REPORT.md
+docs/DEPLOYMENT_GUIDE.md
+docs/VIVA_QA.md
+docs/USER_GUIDE.md
+docs/FINAL_HANDOVER.md
+
+Use actual implemented information.
+
+Do not produce fictitious success statements.
+
+If PDF generation is available, prepare a clean printable version of the project report.
+
+If PDF generation is not available, keep the Markdown report print-ready.
+
+Do not let PDF generation block successful application deployment.
+
+==================================================
+PART 19 — FINAL ACCEPTANCE GATES
+==================================================
+
+Evaluate the project using these gates:
+
+GATE 1:
+Frontend compilation and UI functionality.
+
+GATE 2:
+Express backend functionality.
+
+GATE 3:
+PostgreSQL database connectivity and migrations.
+
+GATE 4:
+Authentication and user isolation.
+
+GATE 5:
+Activity CRUD and carbon calculations.
+
+GATE 6:
+Dashboard and analytics accuracy.
+
+GATE 7:
+Goals, recommendations, and reports.
+
+GATE 8:
+Security and input validation.
+
+GATE 9:
+Automated tests and regression checks.
+
+GATE 10:
+GitHub repository and verified Render deployment.
+
+GATE 11:
+DBMS documentation and viva readiness.
+
+Each gate must have:
+
+- PASS
+- PARTIAL
+- BLOCKED
+- FAIL
+
+Provide evidence for the status.
+
+A completed application requires critical functionality to pass and an actual live deployment to be verified.
+
+If credentials, external permissions, or runtime capabilities prevent deployment, mark deployment BLOCKED and provide exact next actions.
+
+Do not classify the entire project as production-ready merely because a build succeeded.
+
+==================================================
+PART 20 — FINAL HANDOVER REPORT
+==================================================
+
+At the end provide a comprehensive report with:
+
+1. PROJECT NAME
+2. FINAL PHASE
+3. OVERALL STATUS
+4. PHASES 1–6 SUMMARY
+5. IMPLEMENTED FEATURES
+6. FILES MODIFIED
+7. DATABASE SCHEMA STATUS
+8. AUTHENTICATION STATUS
+9. ACTIVITY CRUD STATUS
+10. CARBON CALCULATOR STATUS
+11. DASHBOARD STATUS
+12. ANALYTICS STATUS
+13. SUSTAINABILITY GOALS STATUS
+14. RECOMMENDATION STATUS
+15. CSV EXPORT STATUS
+16. UI/UX STATUS
+17. RESPONSIVE DESIGN STATUS
+18. SECURITY VERIFICATION
+19. TEST EXECUTION RESULTS
+20. BUILD STATUS
+21. GITHUB REPOSITORY URL
+22. GIT COMMIT SHA
+23. RENDER DEPLOYMENT STATUS
+24. VERIFIED LIVE WEBSITE URL
+25. NEON DATABASE CONNECTION STATUS
+26. DOCUMENTATION GENERATED
+27. VIVA PREPARATION STATUS
+28. KNOWN LIMITATIONS
+29. REMAINING BLOCKERS
+30. FINAL ACCEPTANCE VERDICT
+
+Provide exact commands executed.
+
+Provide actual verification results.
+
+Never invent URLs, commits, passing tests, or deployment logs.
+
+==================================================
+FINAL INSTRUCTION
+==================================================
+
+START PHASE 6 NOW.
+
+Continue in the EXISTING Google AI Studio EcoTrack application.
+
+Audit the entire project.
+
+Fix all remaining issues within the approved scope.
+
+Complete missing critical functionality.
+
+Verify PostgreSQL operations.
+
+Run automated tests.
+
+Ensure consistent professional UI/UX.
+
+Perform security checks.
+
+Prepare the project for GitHub.
+
+Deploy to Render if external access and authorization are available.
+
+Otherwise provide exact deployment instructions without claiming deployment succeeded.
+
+Verify the live website when available.
+
+Generate complete DBMS project documentation and viva questions.
+
+Produce the final handover report.
+
+DO NOT START ANOTHER DEVELOPMENT PHASE.
+
+THIS IS THE FINAL APPROVED PHASE.
+
+STOP ONLY AFTER REPORTING THE ACTUAL IMPLEMENTATION AND VERIFICATION STATUS.

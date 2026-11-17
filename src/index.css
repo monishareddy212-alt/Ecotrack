@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-eco-primary: #176B52;
+  --color-eco-dark: #18392C;
+  --color-eco-canvas: #F6F8F3;
+  --color-eco-card: #FFFFFF;
+  --color-eco-sage: #DCEDE3;
+  --color-eco-accent: #F4B860;
+  --color-eco-muted: #64766C;
+  --color-eco-border: #E1EAE4;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #F6F8F3;
+    color: #18392C;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+}

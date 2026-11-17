@@ -1,0 +1,6 @@
+{
+  "name": "EcoTrack — Carbon Emission & Sustainability Tracker",
+  "description": "A relational sustainability dashboard for recording daily carbon-emitting activities, monitoring monthly emission trends, and tracking sustainability goals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
