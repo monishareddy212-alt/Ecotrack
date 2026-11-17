@@ -50,7 +50,8 @@ router.get('/csrf', (req: Request, res: Response) => {
   const csrfToken = ensureSessionCsrfToken(req);
   req.session.save((err) => {
     if (err) {
-      res.status(500).json({ error: 'Unable to initialize session token.' });
+      console.error('EcoTrack: Error saving session during /csrf:', err);
+      res.status(500).json({ error: 'Unable to initialize session token. Please ensure MySQL database is accessible.' });
       return;
     }
     res.status(200).json({ csrfToken });

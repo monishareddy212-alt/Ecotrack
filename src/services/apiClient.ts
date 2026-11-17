@@ -35,7 +35,20 @@ export async function fetchCsrfToken(forceRefresh = false): Promise<string> {
   });
 
   if (!response.ok) {
-    throw new ApiError('Unable to obtain security token.', response.status);
+    let message = 'Unable to obtain security token.';
+    try {
+      const errData = await response.json();
+      if (errData?.error) {
+        message = errData.error;
+      }
+    } catch {
+      if (response.status === 404) {
+        message = 'API server not reachable on this port. Ensure backend is running.';
+      } else if (response.status === 500) {
+        message = 'Database session initialization error. Please check database connection.';
+      }
+    }
+    throw new ApiError(message, response.status);
   }
 
   const data = (await response.json()) as { csrfToken?: string };

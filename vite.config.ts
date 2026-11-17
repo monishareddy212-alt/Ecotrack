@@ -36,6 +36,13 @@ export default defineConfig(() => {
       },
     },
     server: {
+      port: 5173,
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3000',
+          changeOrigin: true,
+        },
+      },
       // HMR can be disabled via DISABLE_HMR env var when needed.
       hmr: process.env.DISABLE_HMR !== 'true',
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
