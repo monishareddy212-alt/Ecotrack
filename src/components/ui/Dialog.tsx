@@ -9,6 +9,7 @@ export interface DialogProps {
   subtitle?: string;
   children: React.ReactNode;
   footer?: React.ReactNode;
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 }
 
 export function Dialog({
@@ -18,6 +19,7 @@ export function Dialog({
   subtitle,
   children,
   footer,
+  maxWidth = 'md',
 }: DialogProps) {
   useEffect(() => {
     if (!open) return;
@@ -32,6 +34,14 @@ export function Dialog({
 
   if (!open) return null;
 
+  const maxWidthClasses = {
+    sm: 'max-w-sm',
+    md: 'max-w-md',
+    lg: 'max-w-lg',
+    xl: 'max-w-xl',
+    '2xl': 'max-w-2xl',
+  }[maxWidth] || 'max-w-md';
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#18392C]/40 backdrop-blur-[1px]"
@@ -42,7 +52,7 @@ export function Dialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby="ecotrack-dialog-title"
-        className="w-full max-w-md rounded-xl border border-[#E1EAE4] bg-white p-6 shadow-lg"
+        className={`w-full ${maxWidthClasses} max-h-[90vh] overflow-y-auto rounded-xl border border-[#E1EAE4] bg-white p-6 shadow-lg`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">
