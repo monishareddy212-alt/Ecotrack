@@ -397,7 +397,7 @@ test('Phase 3 Activity CRUD, backend emission calculations, filters, summary, an
     const plantMealType = typesBody.items.find((t) => t.name === 'Plant-Based Meal');
     assert.ok(carType && carType.hasEmissionFactor);
     assert.ok(electricityType && electricityType.hasEmissionFactor);
-    assert.ok(plantMealType && !plantMealType.hasEmissionFactor);
+    assert.ok(plantMealType && plantMealType.hasEmissionFactor);
 
     // 2. Missing CSRF token on POST /api/activities rejected with 403
     const noCsrfRes = await fetch(`${baseUrl}/api/activities`, {
@@ -430,7 +430,7 @@ test('Phase 3 Activity CRUD, backend emission calculations, filters, summary, an
     });
     assert.equal(badQtyRes.status, 400);
 
-    // 4. Unconfigured lifestyle meal factor rejected honestly with 422
+    // 4. Activity prior to factor effective date rejected honestly with 422
     const mealRes = await fetch(`${baseUrl}/api/activities`, {
       method: 'POST',
       headers: {
@@ -441,7 +441,7 @@ test('Phase 3 Activity CRUD, backend emission calculations, filters, summary, an
       body: JSON.stringify({
         activityTypeId: plantMealType.id,
         quantity: '2',
-        activityDate: '2026-11-10',
+        activityDate: '2010-01-01',
       }),
     });
     assert.equal(mealRes.status, 422);

@@ -98,6 +98,30 @@ export const VERIFIED_EMISSION_FACTORS: readonly SeedEmissionFactor[] = [
     geographicScope: 'Global Tier 1 default',
     notes: 'Derived directly from IPCC Tier 1 default CO2 emission factor (63.1 kg CO2/GJ) and default NCV (47.3 GJ/tonne) for LPG stationary combustion.',
   },
+  {
+    category: 'Lifestyle',
+    activityName: 'Plant-Based Meal',
+    unit: 'meals',
+    factorKgCo2ePerUnit: '0.50000000',
+    source: 'Poore & Nemecek (2018), Science — Reducing food’s environmental impacts through producers and consumers',
+    sourceUrl: 'https://doi.org/10.1126/science.aaq0216',
+    referenceYear: 2018,
+    effectiveDate: '2018-01-01',
+    geographicScope: 'Global dietary proxy',
+    notes: 'Average dietary footprint proxy for a standard plant-based/vegan meal (~0.5 kg CO2e/meal). Actual footprint varies by ingredients.',
+  },
+  {
+    category: 'Lifestyle',
+    activityName: 'Meat-Based Meal',
+    unit: 'meals',
+    factorKgCo2ePerUnit: '2.50000000',
+    source: 'Poore & Nemecek (2018), Science — Reducing food’s environmental impacts through producers and consumers',
+    sourceUrl: 'https://doi.org/10.1126/science.aaq0216',
+    referenceYear: 2018,
+    effectiveDate: '2018-01-01',
+    geographicScope: 'Global dietary proxy',
+    notes: 'Average dietary footprint proxy for an omnivorous meal containing meat (~2.5 kg CO2e/meal). Actual footprint varies by meat type and portion.',
+  },
 ];
 
 export async function seedEmissionFactors(): Promise<number> {
